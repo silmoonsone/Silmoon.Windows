@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace Silmoon.WindowsApp.Converters
 {
+    /// <summary>
+    /// 将一个枚举类型转换为NameValue<Enum>，并且在双向绑定的时候将NameValue<Enum>转换到Enum以绑定可观察属性，和EnumToNameValueArrayConverter配合使用。
+    /// </summary>
     public class NameValueToEnumConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

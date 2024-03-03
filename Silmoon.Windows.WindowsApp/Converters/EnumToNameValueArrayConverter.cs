@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.WindowsApp.Converters
+namespace Silmoon.Windows.WindowsApp.Converters
 {
     /// <summary>
     /// 将一个可观察枚举类型转换为NameValue类型的数组，用于绑定到下拉框以显示枚举在下拉框中的显示信息，和NameValueToEnumConverter配合使用。

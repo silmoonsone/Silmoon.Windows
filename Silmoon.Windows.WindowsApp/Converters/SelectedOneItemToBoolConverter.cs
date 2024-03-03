@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.WindowsApp.Converters
+namespace Silmoon.Windows.WindowsApp.Converters
 {
     /// <summary>
     /// 用于各类ListView、DataGrid等控件的SelectedItems属性与bool类型的绑定，但是只能绑定单选，也就是只有一个选中项时返回true，否则返回false

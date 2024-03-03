@@ -1,21 +1,17 @@
-﻿using System;
+﻿using Silmoon.Windows.Win32Api.Apis;
+using Silmoon.Windows.Win32Api.Structs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Silmoon.WindowsApp.Win32Api.Structs;
 
-namespace Silmoon.WindowsApp.Win32Api
+namespace Silmoon.Windows.Win32Api
 {
     public class Win32ApiHelper
     {
-        [DllImport("kernel32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GlobalMemoryStatusEx([In, Out] MEMORYSTATUSEX lpBuffer);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool GetSystemTimes(out FILETIME lpIdleTime, out FILETIME lpKernelTime, out FILETIME lpUserTime);
 
         private static long prevSystemIdle = 0;
         private static long prevSystemKernel = 0;
@@ -25,7 +21,7 @@ namespace Silmoon.WindowsApp.Win32Api
         {
             MEMORYSTATUSEX memStatus = new MEMORYSTATUSEX();
             MemoryInfo memoryInfo = new MemoryInfo();
-            if (GlobalMemoryStatusEx(memStatus))
+            if (Kernel32.GlobalMemoryStatusEx(memStatus))
             {
                 memoryInfo.MemoryLoad = memStatus.dwMemoryLoad;
                 memoryInfo.TotalPhysicalMemory = memStatus.ullTotalPhys;
@@ -35,11 +31,11 @@ namespace Silmoon.WindowsApp.Win32Api
         }
         public static double GetCpuUsage()
         {
-            GetSystemTimes(out FILETIME idleTime, out FILETIME kernelTime, out FILETIME userTime);
+            Kernel32.GetSystemTimes(out FILETIME idleTime, out FILETIME kernelTime, out FILETIME userTime);
 
-            long systemIdle = idleTime.dwLowDateTime | ((long)idleTime.dwHighDateTime << 32);
-            long systemKernel = kernelTime.dwLowDateTime | ((long)kernelTime.dwHighDateTime << 32);
-            long systemUser = userTime.dwLowDateTime | ((long)userTime.dwHighDateTime << 32);
+            long systemIdle = idleTime.dwLowDateTime | (long)idleTime.dwHighDateTime << 32;
+            long systemKernel = kernelTime.dwLowDateTime | (long)kernelTime.dwHighDateTime << 32;
+            long systemUser = userTime.dwLowDateTime | (long)userTime.dwHighDateTime << 32;
 
             long sysIdleDiff = systemIdle - prevSystemIdle;
             long sysKernelDiff = systemKernel - prevSystemKernel;
@@ -52,7 +48,7 @@ namespace Silmoon.WindowsApp.Win32Api
             prevSystemKernel = systemKernel;
             prevSystemUser = systemUser;
 
-            return (sysUsed * 100.0) / sysTotal;
+            return sysUsed * 100.0 / sysTotal;
         }
     }
     public struct MemoryInfo

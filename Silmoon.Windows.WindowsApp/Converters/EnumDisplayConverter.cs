@@ -12,10 +12,11 @@ namespace Silmoon.Windows.WindowsApp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value == null)
-                return null;
+            if (value == null) return null;
 
             var enumValue = value.GetType().GetField(value.ToString());
+            if (enumValue == null) return value.ToString();
+
             var displayAttribute = enumValue.GetCustomAttributes(typeof(DisplayAttribute), false) as DisplayAttribute[];
 
             return displayAttribute?.Length > 0 ? displayAttribute[0].Name : value.ToString();

@@ -8,17 +8,22 @@ using System.Threading.Tasks;
 
 namespace Silmoon.Windows.WindowsApp.Converters
 {
-    public class StringFormatConverter : IValueConverter
+    public class DateTimeFormatConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value == null)
-                return value;
+                return null;
             else
             {
-                string formatString = parameter as string;
-                if (!formatString.IsNullOrEmpty())
-                    return string.Format(formatString, value);
+                if (value is DateTime dateTime)
+                {
+                    string formatString = parameter as string;
+                    if (!formatString.IsNullOrEmpty())
+                        return dateTime.ToString(formatString);
+                    else
+                        return dateTime;
+                }
                 else
                     return value;
             }

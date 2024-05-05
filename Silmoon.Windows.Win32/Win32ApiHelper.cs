@@ -1,4 +1,5 @@
-﻿using Silmoon.Windows.Win32.Apis;
+﻿using Silmoon.Extension;
+using Silmoon.Windows.Win32.Apis;
 using Silmoon.Windows.Win32.Structs;
 using Silmoon.Windows.Win32Api.Apis;
 using Silmoon.Windows.Win32Api.Structs;
@@ -50,23 +51,22 @@ namespace Silmoon.Windows.Win32Api
 
             return sysUsed * 100.0 / sysTotal;
         }
-        public static string OpenFileDialog(string[] filters, string filterName, string dialogTitle, string startingDirectory = null)
+
+        public static string OpenFileDialog(string[] filters, string[] filterNames, string dialogTitle, string startingDirectory = null)
         {
             var ofn = new OPENFILENAME();
             ofn.lStructSize = Marshal.SizeOf(ofn);
 
+            if (filters.Length != filterNames.Length) throw new ArgumentException("filters and filterNames must have the same length.");
             // 构建过滤器字符串
-            string filter = $"{filterName} (";
-            foreach (string filterExt in filters)
+            string filter = string.Empty;
+
+            for (int i = 0; i < filters.Length; i++)
             {
-                filter += $"*.{filterExt};";
+                filter += $"{filterNames[i]} (*.{filters[i]})\0*.{filters[i]}\0";
             }
-            filter = filter.TrimEnd(';') + ")\0";  // 对于每种文件类型结束时添加 '\0'
-            foreach (string filterExt in filters)
-            {
-                filter += $"*.{filterExt};";
-            }
-            filter = filter.TrimEnd(';') + "\0\0";  // 字符串结束添加 '\0\0'
+            filter += "\0";  // 最终结束符
+
             ofn.lpstrFilter = filter;
             ofn.lpstrFile = new string(new char[256]);
             ofn.nMaxFile = ofn.lpstrFile.Length;
@@ -78,24 +78,21 @@ namespace Silmoon.Windows.Win32Api
                 return ofn.lpstrFile;
             return string.Empty;
         }
-
-        public static string SaveFileDialog(string[] filters, string filterName, string dialogTitle, bool fileExistOverwriteAlert = true, string startingDirectory = null)
+        public static string SaveFileDialog(string[] filters, string[] filterNames, string dialogTitle, bool fileExistOverwriteAlert = true, string startingDirectory = null)
         {
             var ofn = new OPENFILENAME();
             ofn.lStructSize = Marshal.SizeOf(ofn);
 
+            if (filters.Length != filterNames.Length) throw new ArgumentException("filters and filterNames must have the same length.");
             // 构建过滤器字符串
-            string filter = $"{filterName} (";
-            foreach (string filterExt in filters)
+            string filter = string.Empty;
+
+            for (int i = 0; i < filters.Length; i++)
             {
-                filter += $"*.{filterExt};";
+                filter += $"{filterNames[i]} (*.{filters[i]})\0*.{filters[i]}\0";
             }
-            filter = filter.TrimEnd(';') + ")\0";  // 对于每种文件类型结束时添加 '\0'
-            foreach (string filterExt in filters)
-            {
-                filter += $"*.{filterExt};";
-            }
-            filter = filter.TrimEnd(';') + "\0\0";  // 字符串结束添加 '\0\0'
+            filter += "\0";  // 最终结束符
+
             ofn.lpstrFilter = filter;
             ofn.lpstrFile = new string(new char[256]);
             ofn.nMaxFile = ofn.lpstrFile.Length;
@@ -103,10 +100,12 @@ namespace Silmoon.Windows.Win32Api
             ofn.lpstrFileTitle = new string(new char[64]);
             ofn.nMaxFileTitle = ofn.lpstrFileTitle.Length;
             ofn.lpstrTitle = dialogTitle;
-            ofn.Flags = fileExistOverwriteAlert ? 0x00000002 : 0x00000000;
-            if (Comdlg32.GetSaveFileName(ref ofn))
-                return ofn.lpstrFile;
-            return string.Empty;
+            ofn.Flags = Comdlg32.OFN_EXPLORER | Comdlg32.OFN_PATHMUSTEXIST;
+            if (fileExistOverwriteAlert) ofn.Flags |= Comdlg32.OFN_OVERWRITEPROMPT;
+            if (!filter.IsNullOrEmpty()) ofn.lpstrDefExt = filters[0];
+
+            if (Comdlg32.GetSaveFileName(ref ofn)) return ofn.lpstrFile;
+            else return string.Empty;
         }
     }
     public struct MemoryInfo

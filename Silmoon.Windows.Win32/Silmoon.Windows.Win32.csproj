@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-    <PackageReference Include="Silmoon" Version="1.2.3" />
+    <PackageReference Include="Silmoon" Version="1.2.3.2" />
   </ItemGroup>
 
 </Project>

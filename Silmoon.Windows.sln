@@ -9,7 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silmoon.Windows.Win32", "Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silmoon.Windows.Forms", "Silmoon.Windows.Forms\Silmoon.Windows.Forms.csproj", "{B58FB08D-0947-447D-A5BE-A98127A28452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormTest", "WinFormTest\WinFormTest.csproj", "{61A11D99-A599-4008-B40A-935E5D6B2F90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormTest", "WinFormTest\WinFormTest.csproj", "{61A11D99-A599-4008-B40A-935E5D6B2F90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{70E0506D-452D-46DC-8970-218A956E0817}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		logo.png = logo.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

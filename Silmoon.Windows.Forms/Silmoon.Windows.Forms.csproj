@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <PackageId>Silmoon.Windows.Forms</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <Authors>SILMOON</Authors>
     <Company>SILMOON LLC</Company>
     <Description>Silmoon Windows SDK</Description>
@@ -31,7 +31,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Silmoon" Version="1.2.3.3" />
+    <PackageReference Include="Silmoon" Version="1.4.0" />
   </ItemGroup>
 
 </Project>

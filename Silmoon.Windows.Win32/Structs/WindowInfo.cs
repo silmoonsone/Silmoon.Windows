@@ -6,7 +6,7 @@ namespace Silmoon.Windows.Win32Api.Structs
 {
     public struct WindowInfo
     {
-        public IntPtr hWnd;
+        public nint hWnd;
         public string szWindowName;
         public string szClassName;
     }

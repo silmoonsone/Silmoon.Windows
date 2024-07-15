@@ -19,12 +19,12 @@ namespace Silmoon.Windows.Win32Api.Apis
         public const int EWX_FORCEIFHUNG = 0x00000010;
 
         [DllImport("advapi32.dll", ExactSpelling = true, SetLastError = true)]
-        public static extern bool OpenProcessToken(IntPtr h, int acc, ref IntPtr phtok);
+        public static extern bool OpenProcessToken(nint h, int acc, ref nint phtok);
 
         [DllImport("advapi32.dll", SetLastError = true)]
         public static extern bool LookupPrivilegeValue(string host, string name, ref long pluid);
 
         [DllImport("advapi32.dll", ExactSpelling = true, SetLastError = true)]
-        public static extern bool AdjustTokenPrivileges(IntPtr htok, bool disall, ref TokPriv1Luid newst, int len, IntPtr prev, IntPtr relen);
+        public static extern bool AdjustTokenPrivileges(nint htok, bool disall, ref TokPriv1Luid newst, int len, nint prev, nint relen);
     }
 }

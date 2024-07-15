@@ -14,6 +14,9 @@ namespace Silmoon.Windows.Win32Api
 {
     public class Win32ApiHelper
     {
+        // 定义WM_SETREDRAW消息
+        private const int WM_SETREDRAW = 0x000B;
+
         private static long prevSystemIdle = 0;
         private static long prevSystemKernel = 0;
         private static long prevSystemUser = 0;
@@ -107,6 +110,15 @@ namespace Silmoon.Windows.Win32Api
             if (Comdlg32.GetSaveFileName(ref ofn)) return ofn.lpstrFile;
             else return string.Empty;
         }
+        public static void LockWindowUpdate(nint handle)
+        {
+            User32.sendMessage(handle, WM_SETREDRAW, false, nint.Zero);
+        }
+        public static void UnlockWindowUpdate(nint handle)
+        {
+            User32.sendMessage(handle, WM_SETREDRAW, true, nint.Zero);
+        }
+
     }
     public struct MemoryInfo
     {

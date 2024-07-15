@@ -17,7 +17,7 @@
 
   <PropertyGroup>
     <PackageId>Silmoon.Windows.WindowsApp</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>SILMOON</Authors>
     <Company>SILMOON LLC</Company>
     <Description>Silmoon Windows SDK</Description>
@@ -32,9 +32,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240607001" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
-    <PackageReference Include="Silmoon" Version="1.4.0" />
-    <PackageReference Include="Silmoon.Extension" Version="1.4.0" />
+    <PackageReference Include="Silmoon" Version="1.4.1" />
+    <PackageReference Include="Silmoon.Extension" Version="1.4.2" />
   </ItemGroup>
 </Project>

@@ -9,24 +9,26 @@ namespace Silmoon.Windows.Win32Api.Apis
 {
     public class User32
     {
+        private delegate bool WNDENUMPROC(nint hWnd, int lParam);
+
         [DllImport("user32.dll")]
-        private static extern int SetWindowTextW(IntPtr hWhd, [MarshalAs(UnmanagedType.BStr)] string lpString);
+        private static extern int SetWindowTextW(nint hWhd, [MarshalAs(UnmanagedType.BStr)] string lpString);
         [DllImport("user32.dll")]
-        private static extern int GetWindowTextW(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpString, int nMaxCount);
+        private static extern int GetWindowTextW(nint hWnd, [MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpString, int nMaxCount);
         [DllImport("user32.dll")]
-        private static extern int GetClassNameW(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpString, int nMaxCount);
+        private static extern int GetClassNameW(nint hWnd, [MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpString, int nMaxCount);
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
-        private static extern IntPtr GetForegroundWindow();
+        private static extern nint GetForegroundWindow();
         [DllImport("user32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        private static extern bool SetForegroundWindow(nint hWnd);
         [DllImport("user32.dll")]
         private static extern bool EnumWindows(WNDENUMPROC lpEnumFunc, int lParam);
-
-        private delegate bool WNDENUMPROC(IntPtr hWnd, int lParam);
         [DllImport("User32.DLL")]
         private static extern int SendMessage(int hWnd, int Msg, int wParam, int lParam);
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern nint SendMessage(nint hWnd, int msg, bool wParam, nint lParam);
         [DllImport("user32.dll")]
-        static extern bool ExitWindowsEx(ShutdownEnum.ExitWindows uFlags, ShutdownEnum.ShutdownReason dwReason);
+        private static extern bool ExitWindowsEx(ShutdownEnum.ExitWindows uFlags, ShutdownEnum.ShutdownReason dwReason);
 
         /// <summary>
         /// 设置指定句柄的窗口的标题
@@ -34,7 +36,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// <param name="hWnd">句柄</param>
         /// <param name="text">标题</param>
         /// <returns></returns>
-        public static int setWindowTextW(IntPtr hWnd, string text)
+        public static int setWindowTextW(nint hWnd, string text)
         {
             return SetWindowTextW(hWnd, text);
         }
@@ -45,7 +47,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// <param name="sbuilder">已有缓冲区的StringBuilder</param>
         /// <param name="reffCount">返回长度</param>
         /// <returns></returns>
-        public static int getWindowTextW(IntPtr hWnd, StringBuilder sbuilder, int reffCount)
+        public static int getWindowTextW(nint hWnd, StringBuilder sbuilder, int reffCount)
         {
             return GetWindowTextW(hWnd, sbuilder, reffCount);
         }
@@ -56,7 +58,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// <param name="sbuilder">已有缓冲区的StringBuilder</param>
         /// <param name="reffCount">返回长度</param>
         /// <returns></returns>
-        public static int getClassNameW(IntPtr hWnd, StringBuilder sbuilder, int reffCount)
+        public static int getClassNameW(nint hWnd, StringBuilder sbuilder, int reffCount)
         {
             return GetClassNameW(hWnd, sbuilder, reffCount);
         }
@@ -64,7 +66,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// 获取当前活动窗口的句柄
         /// </summary>
         /// <returns></returns>
-        public static IntPtr getForegroundWindow()
+        public static nint getForegroundWindow()
         {
             return GetForegroundWindow();
         }
@@ -73,7 +75,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// </summary>
         /// <param name="hWnd">窗口句柄</param>
         /// <returns></returns>
-        public static bool setForegroundWindow(IntPtr hWnd)
+        public static bool setForegroundWindow(nint hWnd)
         {
             return SetForegroundWindow(hWnd);
         }
@@ -86,7 +88,7 @@ namespace Silmoon.Windows.Win32Api.Apis
             List<WindowInfo> wndList = new List<WindowInfo>();
 
             //enum all desktop windows 
-            EnumWindows(delegate (IntPtr hWnd, int lParam)
+            EnumWindows(delegate (nint hWnd, int lParam)
             {
                 WindowInfo wnd = new WindowInfo();
                 StringBuilder sb = new StringBuilder(256);
@@ -114,6 +116,18 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// <param name="LParam">参数2</param>
         /// <returns></returns>
         public static int sendMessage(int hWnd, int mSg, int WParam, int LParam)
+        {
+            return SendMessage(hWnd, mSg, WParam, LParam);
+        }
+        /// <summary>
+        /// 向指定的句柄窗口发送消息
+        /// </summary>
+        /// <param name="hWnd">目标句柄</param>
+        /// <param name="mSg">消息ID</param>
+        /// <param name="WParam">参数1</param>
+        /// <param name="LParam">参数2</param>
+        /// <returns></returns>
+        public static nint sendMessage(nint hWnd, int mSg, bool WParam, nint LParam)
         {
             return SendMessage(hWnd, mSg, WParam, LParam);
         }

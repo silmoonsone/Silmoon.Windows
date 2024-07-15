@@ -9,7 +9,7 @@ namespace Silmoon.Windows.Win32Api.Apis
     public class Kernel32
     {
         [DllImport("kernel32.dll", ExactSpelling = true)]
-        private static extern IntPtr GetCurrentProcess();
+        private static extern nint GetCurrentProcess();
 
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]

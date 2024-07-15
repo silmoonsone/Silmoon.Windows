@@ -9,8 +9,8 @@ namespace Silmoon.Windows.Win32.Structs
     public struct OPENFILENAME
     {
         public int lStructSize;
-        public IntPtr hwndOwner;
-        public IntPtr hInstance;
+        public nint hwndOwner;
+        public nint hInstance;
         public string lpstrFilter;
         public string lpstrCustomFilter;
         public int nMaxCustFilter;
@@ -25,10 +25,10 @@ namespace Silmoon.Windows.Win32.Structs
         public short nFileOffset;
         public short nFileExtension;
         public string lpstrDefExt;
-        public IntPtr lCustData;
-        public IntPtr lpfnHook;
+        public nint lCustData;
+        public nint lpfnHook;
         public string lpTemplateName;
-        public IntPtr pvReserved;
+        public nint pvReserved;
         public int dwReserved;
         public int flagsEx;
     }

@@ -1,4 +1,4 @@
-﻿namespace Silmoon.Windows.Forms
+﻿namespace Silmoon.Windows.Forms.Extensions
 {
     public static class FormExtension
     {

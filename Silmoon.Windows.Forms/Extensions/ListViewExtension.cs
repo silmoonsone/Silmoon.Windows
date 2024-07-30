@@ -1,4 +1,6 @@
 ﻿using Silmoon.Windows.Forms.ControllerHelpers;
+using Silmoon.Windows.Win32.Structs;
+using Silmoon.Windows.Win32Api.Apis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +54,38 @@ namespace Silmoon.Windows.Forms.Extensions
                     listView.ListViewItemSorter = new ListViewItemComparer(e.Column, true);
                 }
             }
+        }
+        /// <summary>
+        /// Select all rows on the given listview
+        /// </summary>
+        /// <param name="list">The listview whose items are to be selected</param>
+        public static void SelectAllItems(this ListView list)
+        {
+            SetItemState(list, -1, 2, 2);
+        }
+
+        /// <summary>
+        /// Deselect all rows on the given listview
+        /// </summary>
+        /// <param name="list">The listview whose items are to be deselected</param>
+        public static void DeselectAllItems(this ListView list)
+        {
+            SetItemState(list, -1, 2, 0);
+        }
+
+        /// <summary>
+        /// Set the item state on the given item
+        /// </summary>
+        /// <param name="list">The listview whose item's state is to be changed</param>
+        /// <param name="itemIndex">The index of the item to be changed</param>
+        /// <param name="mask">Which bits of the value are to be set?</param>
+        /// <param name="value">The value to be set</param>
+        public static void SetItemState(this ListView list, int itemIndex, int mask, int value)
+        {
+            LVITEM lvItem = new LVITEM();
+            lvItem.stateMask = mask;
+            lvItem.state = value;
+            User32.SendMessageLVItem(list.Handle, User32.LVM_SETITEMSTATE, itemIndex, ref lvItem);
         }
     }
 }

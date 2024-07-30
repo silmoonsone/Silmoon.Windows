@@ -1,4 +1,5 @@
-﻿using Silmoon.Windows.Win32Api.EnumDefined;
+﻿using Silmoon.Windows.Win32.Structs;
+using Silmoon.Windows.Win32Api.EnumDefined;
 using Silmoon.Windows.Win32Api.Structs;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ namespace Silmoon.Windows.Win32Api.Apis
 {
     public class User32
     {
+        public const int LVM_FIRST = 0x1000;
+        public const int LVM_SETITEMSTATE = LVM_FIRST + 43;
+
         private delegate bool WNDENUMPROC(nint hWnd, int lParam);
 
         [DllImport("user32.dll")]
@@ -136,6 +140,15 @@ namespace Silmoon.Windows.Win32Api.Apis
         {
             return ExitWindowsEx(Pew, Per);
         }
-
+        /// <summary>
+        /// 发送给原生ListView的消息
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="msg"></param>
+        /// <param name="wParam"></param>
+        /// <param name="lvi"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessageLVItem(IntPtr hWnd, int msg, int wParam, ref LVITEM lvi);
     }
 }

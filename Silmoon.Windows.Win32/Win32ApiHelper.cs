@@ -112,13 +112,40 @@ namespace Silmoon.Windows.Win32Api
         }
         public static void LockWindowUpdate(nint handle)
         {
-            User32.sendMessage(handle, WM_SETREDRAW, false, nint.Zero);
+            User32.SendMessage(handle, WM_SETREDRAW, false, nint.Zero);
         }
         public static void UnlockWindowUpdate(nint handle)
         {
-            User32.sendMessage(handle, WM_SETREDRAW, true, nint.Zero);
+            User32.SendMessage(handle, WM_SETREDRAW, true, nint.Zero);
         }
+        /// <summary>
+        /// 枚举当前桌面所有的句柄！
+        /// </summary>
+        /// <returns></returns>
+        public static WindowInfo[] EnumWindows()
+        {
+            List<WindowInfo> wndList = new List<WindowInfo>();
 
+            //enum all desktop windows 
+            User32.EnumWindows(delegate (nint hWnd, int lParam)
+            {
+                WindowInfo wnd = new WindowInfo();
+                StringBuilder sb = new StringBuilder(256);
+                //get hwnd 
+                wnd.hWnd = hWnd;
+                //get window name 
+                User32.GetWindowTextW(hWnd, sb, sb.Capacity);
+                wnd.szWindowName = sb.ToString();
+                //get window class 
+                User32.GetClassNameW(hWnd, sb, sb.Capacity);
+                wnd.szClassName = sb.ToString();
+                //add it into list 
+                wndList.Add(wnd);
+                return true;
+            }, 0);
+
+            return wndList.ToArray();
+        }
     }
     public struct MemoryInfo
     {

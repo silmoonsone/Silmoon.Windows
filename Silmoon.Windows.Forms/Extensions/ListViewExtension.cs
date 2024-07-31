@@ -85,7 +85,7 @@ namespace Silmoon.Windows.Forms.Extensions
             LVITEM lvItem = new LVITEM();
             lvItem.stateMask = mask;
             lvItem.state = value;
-            User32.SendMessageLVItem(list.Handle, User32.LVM_SETITEMSTATE, itemIndex, ref lvItem);
+            User32.SendMessage(list.Handle, User32.LVM_SETITEMSTATE, itemIndex, ref lvItem);
         }
     }
 }

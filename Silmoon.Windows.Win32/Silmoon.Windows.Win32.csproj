@@ -27,6 +27,7 @@
     <PackageTags>silmoon;win32;win32api</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageOutputPath>..\packages_out</PackageOutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 

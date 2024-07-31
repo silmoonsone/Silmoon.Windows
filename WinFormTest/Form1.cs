@@ -1,5 +1,6 @@
 using Silmoon.Windows.Forms;
 using Silmoon.Windows.Forms.Extensions;
+using Silmoon.Windows.Win32Api;
 
 namespace WinFormTest
 {
@@ -19,7 +20,10 @@ namespace WinFormTest
         {
             //SetHeightEx(Height + 100, true);
             //Genie.ShowControl(progressBar1, true);
-
+            var result = Win32ApiHelper.EnumWindows();
+            ///filter WindowName is empty
+            
+            var list = result.Where(x => !string.IsNullOrEmpty(x.szWindowName) && x.szWindowName != "Default IME").ToList();
         }
     }
 }

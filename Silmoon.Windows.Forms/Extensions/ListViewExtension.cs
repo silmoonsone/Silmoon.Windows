@@ -1,6 +1,7 @@
 ﻿using Silmoon.Windows.Forms.ControllerHelpers;
+using Silmoon.Windows.Win32;
+using Silmoon.Windows.Win32.Apis;
 using Silmoon.Windows.Win32.Structs;
-using Silmoon.Windows.Win32Api.Apis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,7 +86,7 @@ namespace Silmoon.Windows.Forms.Extensions
             LVITEM lvItem = new LVITEM();
             lvItem.stateMask = mask;
             lvItem.state = value;
-            User32.SendMessage(list.Handle, User32.LVM_SETITEMSTATE, itemIndex, ref lvItem);
+            User32.SendMessage(list.Handle, Const.LVM_SETITEMSTATE, itemIndex, ref lvItem);
         }
     }
 }

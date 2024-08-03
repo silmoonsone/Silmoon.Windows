@@ -1,6 +1,6 @@
 using Silmoon.Windows.Forms;
 using Silmoon.Windows.Forms.Extensions;
-using Silmoon.Windows.Win32Api;
+using Silmoon.Windows.Win32;
 
 namespace WinFormTest
 {

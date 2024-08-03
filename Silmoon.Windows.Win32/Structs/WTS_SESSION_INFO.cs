@@ -1,10 +1,10 @@
-﻿using Silmoon.Windows.Win32Api.EnumDefined;
+﻿using Silmoon.Windows.Win32.EnumDefined;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Silmoon.Windows.Win32Api.Structs
+namespace Silmoon.Windows.Win32.Structs
 {
     public struct WTS_SESSION_INFO
     {

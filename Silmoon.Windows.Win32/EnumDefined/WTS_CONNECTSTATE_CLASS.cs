@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Silmoon.Windows.Win32Api.EnumDefined
+namespace Silmoon.Windows.Win32.EnumDefined
 {
     public enum WTS_CONNECTSTATE_CLASS
     {

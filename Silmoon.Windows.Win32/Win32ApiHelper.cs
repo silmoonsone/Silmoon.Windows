@@ -1,8 +1,6 @@
 ﻿using Silmoon.Extension;
 using Silmoon.Windows.Win32.Apis;
 using Silmoon.Windows.Win32.Structs;
-using Silmoon.Windows.Win32Api.Apis;
-using Silmoon.Windows.Win32Api.Structs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.Win32Api
+namespace Silmoon.Windows.Win32
 {
     public class Win32ApiHelper
     {
@@ -103,8 +101,8 @@ namespace Silmoon.Windows.Win32Api
             ofn.lpstrFileTitle = new string(new char[64]);
             ofn.nMaxFileTitle = ofn.lpstrFileTitle.Length;
             ofn.lpstrTitle = dialogTitle;
-            ofn.Flags = Comdlg32.OFN_EXPLORER | Comdlg32.OFN_PATHMUSTEXIST;
-            if (fileExistOverwriteAlert) ofn.Flags |= Comdlg32.OFN_OVERWRITEPROMPT;
+            ofn.Flags = Const.OFN_EXPLORER | Const.OFN_PATHMUSTEXIST;
+            if (fileExistOverwriteAlert) ofn.Flags |= Const.OFN_OVERWRITEPROMPT;
             if (!filter.IsNullOrEmpty()) ofn.lpstrDefExt = filters[0];
 
             if (Comdlg32.GetSaveFileName(ref ofn)) return ofn.lpstrFile;

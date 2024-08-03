@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Silmoon.Windows.Win32Api
+namespace Silmoon.Windows.Win32
 {
     public sealed class Settings
     {

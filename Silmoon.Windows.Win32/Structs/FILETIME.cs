@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.Win32Api.Structs
+namespace Silmoon.Windows.Win32.Structs
 {
     public struct FILETIME
     {

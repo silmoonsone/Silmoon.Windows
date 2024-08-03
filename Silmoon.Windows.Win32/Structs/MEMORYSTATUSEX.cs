@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.Win32Api.Structs
+namespace Silmoon.Windows.Win32.Structs
 {
     [StructLayout(LayoutKind.Sequential)]
     public class MEMORYSTATUSEX

@@ -1,20 +1,14 @@
-﻿using Silmoon.Windows.Win32.Structs;
-using Silmoon.Windows.Win32Api.EnumDefined;
-using Silmoon.Windows.Win32Api.Structs;
+﻿using Silmoon.Windows.Win32.EnumDefined;
+using Silmoon.Windows.Win32.Structs;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Silmoon.Windows.Win32Api.Apis
+namespace Silmoon.Windows.Win32.Apis
 {
     public class User32
     {
-        public const int LVM_FIRST = 0x1000;
-        public const int LVM_SETITEMSTATE = LVM_FIRST + 43;
-
-        public delegate bool WNDENUMPROC(nint hWnd, int lParam);
-
         [DllImport("user32.dll", EntryPoint = "SetWindowTextW")]
         private static extern int _setWindowTextW(nint hWhd, [MarshalAs(UnmanagedType.BStr)] string lpString);
         [DllImport("user32.dll", EntryPoint = "GetWindowTextW")]
@@ -26,13 +20,13 @@ namespace Silmoon.Windows.Win32Api.Apis
         [DllImport("user32.dll", EntryPoint = "SetForegroundWindow")]
         private static extern bool _setForegroundWindow(nint hWnd);
         [DllImport("user32.dll", EntryPoint = "EnumWindows")]
-        private static extern bool _enumWindows(WNDENUMPROC lpEnumFunc, int lParam);
+        private static extern bool _enumWindows(Const.WNDENUMPROC lpEnumFunc, int lParam);
         [DllImport("User32.DLL", EntryPoint = "SendMessage")]
         private static extern int _sendMessage(int hWnd, int Msg, int wParam, int lParam);
         [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
         private static extern nint _sendMessage(nint hWnd, int msg, bool wParam, nint lParam);
         [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
-        private static extern nint _sendMessage(IntPtr hWnd, int msg, int wParam, ref LVITEM lvi);
+        private static extern nint _sendMessage(nint hWnd, int msg, int wParam, ref LVITEM lvi);
         [DllImport("user32.dll", EntryPoint = "ExitWindowsEx")]
         private static extern bool _exitWindowsEx(ShutdownEnum.ExitWindows uFlags, ShutdownEnum.ShutdownReason dwReason);
 
@@ -70,7 +64,7 @@ namespace Silmoon.Windows.Win32Api.Apis
         /// <param name="hWnd">窗口句柄</param>
         /// <returns></returns>
         public static bool SetForegroundWindow(nint hWnd) => _setForegroundWindow(hWnd);
-        public static bool EnumWindows(WNDENUMPROC lpEnumFunc, int lParam) => _enumWindows(lpEnumFunc, lParam);
+        public static bool EnumWindows(Const.WNDENUMPROC lpEnumFunc, int lParam) => _enumWindows(lpEnumFunc, lParam);
         /// <summary>
         /// 向指定的句柄窗口发送消息
         /// </summary>

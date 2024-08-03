@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Silmoon.Windows.Win32Api.Structs
+namespace Silmoon.Windows.Win32.Structs
 {
     public struct WindowInfo
     {

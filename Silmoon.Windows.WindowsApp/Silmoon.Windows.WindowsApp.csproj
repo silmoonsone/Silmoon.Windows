@@ -8,6 +8,10 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\logo.png">
       <Pack>True</Pack>
@@ -32,9 +36,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
-    <PackageReference Include="Silmoon" Version="1.4.2" />
-    <PackageReference Include="Silmoon.Extension" Version="1.4.3" />
+    <PackageReference Include="Silmoon" Version="1.5.0" />
+    <PackageReference Include="Silmoon.Extension" Version="1.5.0" />
   </ItemGroup>
 </Project>

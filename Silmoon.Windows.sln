@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silmoon.Windows.WindowsApp", "Silmoon.Windows.WindowsApp\Silmoon.Windows.WindowsApp.csproj", "{51367505-B303-4553-B932-A234FD42AEEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silmoon.Windows.Win32", "Silmoon.Windows.Win32\Silmoon.Windows.Win32.csproj", "{5555D932-723A-47E8-A54D-9C3C4D596DAD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silmoon.Windows.Forms", "Silmoon.Windows.Forms\Silmoon.Windows.Forms.csproj", "{B58FB08D-0947-447D-A5BE-A98127A28452}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormTest", "WinFormTest\WinFormTest.csproj", "{61A11D99-A599-4008-B40A-935E5D6B2F90}"
@@ -18,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		LICENSE.txt = LICENSE.txt
 		logo.png = logo.png
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silmoon.Windows.Win32", "Silmoon.Windows.Win32\Silmoon.Windows.Win32.csproj", "{B9A18B4E-06D6-4C6C-9CE2-611B95626616}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +35,6 @@ Global
 		{51367505-B303-4553-B932-A234FD42AEEE}.Release|Any CPU.Build.0 = Release|x64
 		{51367505-B303-4553-B932-A234FD42AEEE}.Release|x64.ActiveCfg = Release|x64
 		{51367505-B303-4553-B932-A234FD42AEEE}.Release|x64.Build.0 = Release|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Debug|Any CPU.Build.0 = Debug|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Debug|x64.ActiveCfg = Debug|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Debug|x64.Build.0 = Debug|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Release|Any CPU.ActiveCfg = Release|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Release|Any CPU.Build.0 = Release|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Release|x64.ActiveCfg = Release|x64
-		{5555D932-723A-47E8-A54D-9C3C4D596DAD}.Release|x64.Build.0 = Release|x64
 		{B58FB08D-0947-447D-A5BE-A98127A28452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B58FB08D-0947-447D-A5BE-A98127A28452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B58FB08D-0947-447D-A5BE-A98127A28452}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -59,6 +51,14 @@ Global
 		{61A11D99-A599-4008-B40A-935E5D6B2F90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61A11D99-A599-4008-B40A-935E5D6B2F90}.Release|x64.ActiveCfg = Release|Any CPU
 		{61A11D99-A599-4008-B40A-935E5D6B2F90}.Release|x64.Build.0 = Release|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Debug|x64.Build.0 = Debug|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|x64.ActiveCfg = Release|Any CPU
+		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

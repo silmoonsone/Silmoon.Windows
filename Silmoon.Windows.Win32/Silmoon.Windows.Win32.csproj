@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <PackageId>Silmoon.Windows.Win32</PackageId>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <Authors>SILMOON</Authors>
     <Company>SILMOON LLC</Company>
     <Description>Silmoon Windows SDK</Description>
@@ -31,7 +31,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Silmoon" Version="1.5.0" />
+    <PackageReference Include="Silmoon" Version="1.6.2" />
   </ItemGroup>
 
 </Project>

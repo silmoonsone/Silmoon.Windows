@@ -40,6 +40,6 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
     <PackageReference Include="Silmoon" Version="1.7.5" />
-    <PackageReference Include="Silmoon.Extension" Version="1.6.8" />
+    <PackageReference Include="Silmoon.Extension" Version="1.6.9" />
   </ItemGroup>
 </Project>

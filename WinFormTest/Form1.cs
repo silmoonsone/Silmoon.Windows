@@ -9,21 +9,29 @@ namespace WinFormTest
         public Form1()
         {
             InitializeComponent();
-            CloseStyle = WindowCloseStyle.MixStyleExt;
+            CloseStyle = WindowCloseStyle.MinZoomFadeOut;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ctlEnumAllWindowButton_Click(object sender, EventArgs e)
         {
-            //SetHeightEx(Height + 100, true);
-            //Genie.ShowControl(progressBar1, true);
+            // SetHeightEx(Height + 100, true);
+            // Genie.ShowControl(progressBar1, true);
             var result = Win32ApiHelper.EnumWindows();
-            ///filter WindowName is empty
-            
+            // filter WindowName is empty
             var list = result.Where(x => !string.IsNullOrEmpty(x.szWindowName) && x.szWindowName != "Default IME").ToList();
+        }
+
+        private void ctlListViewTestButton_Click(object sender, EventArgs e)
+        {
+            var listviewForm = new ListViewForm();
+            listviewForm.FormClosed += (s, e) => Close();
+            listviewForm.Show();
+            Hide();
         }
     }
 }

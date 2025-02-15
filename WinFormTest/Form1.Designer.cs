@@ -28,34 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            progressBar1 = new ProgressBar();
+            ctlEnumAllWindowButton = new Button();
+            ctlListViewTestButton = new Button();
             SuspendLayout();
             // 
-            // button1
+            // ctlEnumAllWindowButton
             // 
-            button1.Location = new Point(354, 200);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ctlEnumAllWindowButton.Location = new Point(12, 12);
+            ctlEnumAllWindowButton.Name = "ctlEnumAllWindowButton";
+            ctlEnumAllWindowButton.Size = new Size(75, 23);
+            ctlEnumAllWindowButton.TabIndex = 0;
+            ctlEnumAllWindowButton.Text = "EnumAllWindow";
+            ctlEnumAllWindowButton.UseVisualStyleBackColor = true;
+            ctlEnumAllWindowButton.Click += ctlEnumAllWindowButton_Click;
             // 
-            // progressBar1
+            // ctlListViewTestButton
             // 
-            progressBar1.Location = new Point(352, 333);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(100, 23);
-            progressBar1.TabIndex = 1;
+            ctlListViewTestButton.Location = new Point(93, 12);
+            ctlListViewTestButton.Name = "ctlListViewTestButton";
+            ctlListViewTestButton.Size = new Size(75, 23);
+            ctlListViewTestButton.TabIndex = 1;
+            ctlListViewTestButton.Text = "ListViewTest";
+            ctlListViewTestButton.UseVisualStyleBackColor = true;
+            ctlListViewTestButton.Click += ctlListViewTestButton_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(progressBar1);
-            Controls.Add(button1);
+            ClientSize = new Size(800, 575);
+            Controls.Add(ctlListViewTestButton);
+            Controls.Add(ctlEnumAllWindowButton);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -64,7 +67,7 @@
 
         #endregion
 
-        private Button button1;
-        private ProgressBar progressBar1;
+        private Button ctlEnumAllWindowButton;
+        private Button ctlListViewTestButton;
     }
 }

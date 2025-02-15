@@ -40,9 +40,9 @@ namespace Silmoon.Windows.Forms
             get
             {
                 if (closeProc == _close_max_thread_proc)
-                    return WindowCloseStyle.MaxStyleExt;
+                    return WindowCloseStyle.MaxZoomFadeOut;
                 else if (closeProc == _close_mix_thread_proc)
-                    return WindowCloseStyle.MixStyleExt;
+                    return WindowCloseStyle.MinZoomFadeOut;
                 else
                     return WindowCloseStyle.Undefined;
             }
@@ -50,10 +50,10 @@ namespace Silmoon.Windows.Forms
             {
                 switch (value)
                 {
-                    case WindowCloseStyle.MaxStyleExt:
+                    case WindowCloseStyle.MaxZoomFadeOut:
                         closeProc = _close_max_thread_proc;
                         break;
-                    case WindowCloseStyle.MixStyleExt:
+                    case WindowCloseStyle.MinZoomFadeOut:
                         closeProc = _close_mix_thread_proc;
                         break;
                     default:
@@ -68,9 +68,9 @@ namespace Silmoon.Windows.Forms
             get
             {
                 if (hideProc == _close_max_thread_proc)
-                    return WindowCloseStyle.MaxStyleExt;
+                    return WindowCloseStyle.MaxZoomFadeOut;
                 else if (hideProc == _close_mix_thread_proc)
-                    return WindowCloseStyle.MixStyleExt;
+                    return WindowCloseStyle.MinZoomFadeOut;
                 else
                     return WindowCloseStyle.Undefined;
             }
@@ -78,10 +78,10 @@ namespace Silmoon.Windows.Forms
             {
                 switch (value)
                 {
-                    case WindowCloseStyle.MaxStyleExt:
+                    case WindowCloseStyle.MaxZoomFadeOut:
                         hideProc = _close_max_thread_proc;
                         break;
-                    case WindowCloseStyle.MixStyleExt:
+                    case WindowCloseStyle.MinZoomFadeOut:
                         hideProc = _close_mix_thread_proc;
                         break;
                     default:
@@ -383,7 +383,7 @@ namespace Silmoon.Windows.Forms
 
         public enum WindowCloseStyle
         {
-            MaxStyleExt, MixStyleExt, Undefined
+            MaxZoomFadeOut, MinZoomFadeOut, Undefined
         }
     }
 }

@@ -16,7 +16,7 @@
 
   <PropertyGroup>
     <PackageId>Silmoon.Windows.Forms</PackageId>
-    <Version>1.2.4</Version>
+    <Version>1.2.6</Version>
     <Authors>SILMOON</Authors>
     <Company>SILMOON LLC</Company>
     <Description>Silmoon Windows SDK</Description>

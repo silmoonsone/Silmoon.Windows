@@ -30,29 +30,30 @@ namespace WinFormTest
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListViewForm));
-            listView1 = new DoubleBufferedListView();
+            doubleBufferedListView1 = new DoubleBufferedListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             SuspendLayout();
             // 
-            // listView1
+            // doubleBufferedListView1
             // 
-            listView1.AccepteSortColumns = (List<int>)resources.GetObject("listView1.AccepteSortColumns");
-            listView1.AscSortColumnSymbol = "▲";
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
-            listView1.DescSortColumnSymbol = "▼";
-            listView1.Dock = DockStyle.Fill;
-            listView1.FullRowSelect = true;
-            listView1.Location = new Point(0, 0);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(800, 450);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.VirtualMode = true;
-            listView1.RetrieveVirtualItem += listView1_RetrieveVirtualItem;
+            doubleBufferedListView1.AcceptSortColumns.Add(0);
+            doubleBufferedListView1.AcceptSortColumns.Add(1);
+            doubleBufferedListView1.AcceptSortColumns.Add(2);
+            doubleBufferedListView1.AscSortColumnSymbol = "▲";
+            doubleBufferedListView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
+            doubleBufferedListView1.DescSortColumnSymbol = "▼";
+            doubleBufferedListView1.Dock = DockStyle.Fill;
+            doubleBufferedListView1.Location = new Point(0, 0);
+            doubleBufferedListView1.Name = "doubleBufferedListView1";
+            doubleBufferedListView1.Size = new Size(800, 450);
+            doubleBufferedListView1.SortSymbolColumnTextPrefix = true;
+            doubleBufferedListView1.TabIndex = 0;
+            doubleBufferedListView1.UseCompatibleStateImageBehavior = false;
+            doubleBufferedListView1.View = View.Details;
+            doubleBufferedListView1.VirtualSortOrder = SortOrder.None;
+            doubleBufferedListView1.RightToLeftLayoutChanged += ListView1_OnColumnSort;
             // 
             // columnHeader1
             // 
@@ -71,16 +72,17 @@ namespace WinFormTest
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            Controls.Add(doubleBufferedListView1);
             Name = "ListViewForm";
             Text = "ListViewForm";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DoubleBufferedListView doubleBufferedListView1;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
-        private DoubleBufferedListView listView1;
     }
 }

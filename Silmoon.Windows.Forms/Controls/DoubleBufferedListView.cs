@@ -9,8 +9,9 @@ namespace Silmoon.Windows.Forms.Controls
 {
     public class DoubleBufferedListView : ListView
     {
-        public event Action<SortOrder, int?> OnColumnSort;
-        public int? SortColumnIndex { get; private set; } = null;
+        public event Func<SortOrder, int?, bool> OnColumnSort;
+        public SortOrder VirtualOrder { get; set; } = SortOrder.None;
+        public int? VirtualSortColumnIndex { get; private set; } = null;
         public List<int> AccepteSortColumns { get; set; } = [];
         public string AscSortColumnSymbol { get; set; } = "▲";
         public string DescSortColumnSymbol { get; set; } = "▼";
@@ -40,26 +41,26 @@ namespace Silmoon.Windows.Forms.Controls
                     Columns[item].Text = Columns[item].Text.Replace(" " + AscSortColumnSymbol, "").Replace(" " + DescSortColumnSymbol, "");
                 }
 
-                if (SortColumnIndex.HasValue && SortColumnIndex.Value != e.Column)
+                if (VirtualSortColumnIndex.HasValue && VirtualSortColumnIndex.Value != e.Column)
                 {
-                    SortColumnIndex = e.Column;
-                    Sorting = SortOrder.Ascending;
-                    Columns[SortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
+                    VirtualSortColumnIndex = e.Column;
+                    VirtualOrder = SortOrder.Ascending;
+                    Columns[VirtualSortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
                 }
                 else
                 {
-                    SortColumnIndex = e.Column;
-                    if (Sorting == SortOrder.None)
+                    VirtualSortColumnIndex = e.Column;
+                    if (VirtualOrder == SortOrder.None)
                     {
-                        Sorting = SortOrder.Ascending;
-                        Columns[SortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
+                        VirtualOrder = SortOrder.Ascending;
+                        Columns[VirtualSortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
                     }
                     else
                     {
-                        if (Sorting == SortOrder.Ascending)
+                        if (VirtualOrder == SortOrder.Ascending)
                         {
-                            Sorting = SortOrder.Descending;
-                            Columns[SortColumnIndex.Value].Text += " " + DescSortColumnSymbol;
+                            VirtualOrder = SortOrder.Descending;
+                            Columns[VirtualSortColumnIndex.Value].Text += " " + DescSortColumnSymbol;
                         }
                         else
                         {
@@ -67,14 +68,13 @@ namespace Silmoon.Windows.Forms.Controls
                             //AscSort = true;
                             //Columns[SortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
 
-                            SortColumnIndex = null;
-                            Sorting = SortOrder.None;
+                            VirtualSortColumnIndex = null;
+                            VirtualOrder = SortOrder.None;
                         }
                     }
                 }
-                OnColumnSort?.Invoke(Sorting, SortColumnIndex);
-                Invalidate();
             }
+            if (OnColumnSort?.Invoke(VirtualOrder, VirtualSortColumnIndex) ?? false) Invalidate();
             base.OnColumnClick(e);
         }
     }

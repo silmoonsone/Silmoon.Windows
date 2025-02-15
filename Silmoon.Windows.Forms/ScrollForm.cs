@@ -44,7 +44,7 @@ namespace Silmoon.Windows.Forms
                 else if (closeProc == _close_mix_thread_proc)
                     return WindowCloseStyle.MinZoomFadeOut;
                 else
-                    return WindowCloseStyle.Undefined;
+                    return WindowCloseStyle.None;
             }
             set
             {
@@ -72,7 +72,7 @@ namespace Silmoon.Windows.Forms
                 else if (hideProc == _close_mix_thread_proc)
                     return WindowCloseStyle.MinZoomFadeOut;
                 else
-                    return WindowCloseStyle.Undefined;
+                    return WindowCloseStyle.None;
             }
             set
             {
@@ -315,7 +315,7 @@ namespace Silmoon.Windows.Forms
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (CloseStyle != WindowCloseStyle.Undefined)
+            if (CloseStyle != WindowCloseStyle.None)
             {
                 if (!realClose)
                 {
@@ -383,7 +383,7 @@ namespace Silmoon.Windows.Forms
 
         public enum WindowCloseStyle
         {
-            MaxZoomFadeOut, MinZoomFadeOut, Undefined
+            MaxZoomFadeOut, MinZoomFadeOut, None
         }
     }
 }

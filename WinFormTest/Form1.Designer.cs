@@ -59,6 +59,7 @@
             ClientSize = new Size(800, 575);
             Controls.Add(ctlListViewTestButton);
             Controls.Add(ctlEnumAllWindowButton);
+            DoubleBuffered = true;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;

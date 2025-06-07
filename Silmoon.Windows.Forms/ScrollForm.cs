@@ -34,7 +34,7 @@ namespace Silmoon.Windows.Forms
             Genie = new GenieExtension(this);
         }
 
-        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public WindowCloseStyle CloseStyle
         {
             get
@@ -62,7 +62,7 @@ namespace Silmoon.Windows.Forms
             }
         }
 
-        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public WindowCloseStyle HideStyle
         {
             get

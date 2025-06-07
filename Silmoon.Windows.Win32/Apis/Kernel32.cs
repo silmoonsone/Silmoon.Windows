@@ -10,7 +10,7 @@ namespace Silmoon.Windows.Win32.Apis
     public class Kernel32
     {
         [DllImport("kernel32.dll", ExactSpelling = true)]
-        private static extern nint GetCurrentProcess();
+        public static extern nint GetCurrentProcess();
 
         [DllImport("kernel32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -46,6 +46,11 @@ namespace Silmoon.Windows.Win32.Apis
         public static extern int AllocConsole();
         [DllImport("kernel32")]
         public static extern int FreeConsole();
-
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern int SetLocalTime(ref SYSTEMTIME lpSystemTime);
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetShortPathName(string lpszLongPath, StringBuilder shortFile, int cchBuffer);
+        //[DllImport("winmm.dll", EntryPoint = "mciSendString", CharSet = CharSet.Auto)]
+        //public static extern int mciSendString(string lpstrCommand, string lpstrReturnString, int uReturnLength, int hwndCallback);
     }
 }

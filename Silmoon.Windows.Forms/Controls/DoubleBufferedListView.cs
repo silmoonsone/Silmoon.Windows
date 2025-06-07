@@ -11,12 +11,17 @@ namespace Silmoon.Windows.Forms.Controls
     public class DoubleBufferedListView : ListView
     {
         public event Func<SortOrder, int?, bool> OnColumnSort;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public SortOrder VirtualSortOrder { get; set; } = SortOrder.None;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int? VirtualSortColumnIndex { get; private set; } = null;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public List<int> AcceptSortColumns { get; set; } = new List<int>();
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string AscSortColumnSymbol { get; set; } = "▲";
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string DescSortColumnSymbol { get; set; } = "▼";
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool SortSymbolColumnTextPrefix { get; set; } = true;
         public DoubleBufferedListView()
         {

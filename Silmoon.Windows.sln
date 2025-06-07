@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silmoon.Windows.Win32", "Silmoon.Windows.Win32\Silmoon.Windows.Win32.csproj", "{B9A18B4E-06D6-4C6C-9CE2-611B95626616}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silmoon.Windows", "Silmoon.Windows\Silmoon.Windows.csproj", "{8E2880D6-4F05-4E1D-B503-9BC0700FB581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,14 @@ Global
 		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|x64.ActiveCfg = Release|Any CPU
 		{B9A18B4E-06D6-4C6C-9CE2-611B95626616}.Release|x64.Build.0 = Release|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Debug|x64.Build.0 = Debug|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Release|x64.ActiveCfg = Release|Any CPU
+		{8E2880D6-4F05-4E1D-B503-9BC0700FB581}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

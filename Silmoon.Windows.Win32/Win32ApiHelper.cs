@@ -1,8 +1,11 @@
 ﻿using Silmoon.Extension;
+using Silmoon.Models;
 using Silmoon.Windows.Win32.Apis;
+using Silmoon.Windows.Win32.EnumDefined;
 using Silmoon.Windows.Win32.Structs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -144,11 +147,48 @@ namespace Silmoon.Windows.Win32
 
             return wndList.ToArray();
         }
-    }
-    public struct MemoryInfo
-    {
-        public uint MemoryLoad { get; set; }
-        public ulong TotalPhysicalMemory { get; set; }
-        public ulong AvailablePhysicalMemory { get; set; }
+        public static StateSet<bool, Win32Exception> SetLocalTime(DateTime dateTime)
+        {
+            var systemTime = new SYSTEMTIME
+            {
+                wYear = (ushort)dateTime.Year,
+                wMonth = (ushort)dateTime.Month,
+                wDay = (ushort)dateTime.Day,
+                wHour = (ushort)dateTime.Hour,
+                wMinute = (ushort)dateTime.Minute,
+                wSecond = (ushort)dateTime.Second,
+                wMilliseconds = (ushort)dateTime.Millisecond
+            };
+            var result = Kernel32.SetLocalTime(ref systemTime);
+            if (result == 0)
+            {
+                int errorCode = Marshal.GetLastWin32Error();
+                return false.ToStateSet(new Win32Exception(errorCode, "Failed to set local time."));
+            }
+            else
+            {
+                return true.ToStateSet<Win32Exception>(null);
+            }
+        }
+        public static string GetShortName(string s)
+        {
+            StringBuilder shortpath = new StringBuilder(255);
+            Kernel32.GetShortPathName(s, shortpath, shortpath.Capacity);
+            return shortpath.ToString();
+        }
+        public static bool ShutdownLocalhost(ShutdownEnum.ExitWindows options, ShutdownEnum.ShutdownReason reason)
+        {
+            TokPriv1Luid tp;
+            IntPtr hproc = Kernel32.GetCurrentProcess();
+            IntPtr zeroPtr = IntPtr.Zero;
+            AdvApi32.OpenProcessToken(hproc, AdvApi32.TOKEN_ADJUST_PRIVILEGES | AdvApi32.TOKEN_QUERY, ref zeroPtr);
+            tp.Count = 1;
+            tp.Luid = 0;
+            tp.Attr = AdvApi32.SE_PRIVILEGE_ENABLED;
+            AdvApi32.LookupPrivilegeValue(null, AdvApi32.SE_SHUTDOWN_NAME, ref tp.Luid);
+            AdvApi32.AdjustTokenPrivileges(zeroPtr, false, ref tp, 0, IntPtr.Zero, IntPtr.Zero);
+            return User32.ExitWindowsEx(options, reason);
+        }
+
     }
 }

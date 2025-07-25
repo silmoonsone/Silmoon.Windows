@@ -38,13 +38,10 @@ namespace WinFormTest
             // 
             // doubleBufferedListView1
             // 
-            doubleBufferedListView1.AcceptSortColumns.Add(0);
-            doubleBufferedListView1.AcceptSortColumns.Add(1);
-            doubleBufferedListView1.AcceptSortColumns.Add(2);
-            doubleBufferedListView1.AscSortColumnSymbol = "▲";
             doubleBufferedListView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
             doubleBufferedListView1.DescSortColumnSymbol = "▼";
             doubleBufferedListView1.Dock = DockStyle.Fill;
+            doubleBufferedListView1.FullRowSelect = true;
             doubleBufferedListView1.Location = new Point(0, 0);
             doubleBufferedListView1.Name = "doubleBufferedListView1";
             doubleBufferedListView1.Size = new Size(800, 450);
@@ -54,6 +51,7 @@ namespace WinFormTest
             doubleBufferedListView1.View = View.Details;
             doubleBufferedListView1.VirtualSortOrder = SortOrder.None;
             doubleBufferedListView1.RightToLeftLayoutChanged += ListView1_OnColumnSort;
+            doubleBufferedListView1.RetrieveVirtualItem += doubleBufferedListView1_RetrieveVirtualItem;
             // 
             // columnHeader1
             // 

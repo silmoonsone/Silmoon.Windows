@@ -16,13 +16,14 @@ namespace WinFormTest
         public ListViewForm()
         {
             InitializeComponent();
-            doubleBufferedListView1.OnColumnSort += ListView1_OnColumnSort;
+            doubleBufferedListView1.OnVirtualModeColumnSort += ListView1_OnVirtualModeColumnSort;
             doubleBufferedListView1.VirtualListSize = 100;
+            doubleBufferedListView1.VirtualMode = true;
         }
 
-        private bool ListView1_OnColumnSort(SortOrder arg1, int? arg2)
+        private bool ListView1_OnVirtualModeColumnSort(SortOrder arg1, int arg2)
         {
-            Debug.WriteLine($"Sorting: {arg1}, index: {arg2}");
+            Debug.WriteLine($"Index: {arg2}, Sorting: {arg1}.");
             return true;
         }
 
@@ -34,6 +35,11 @@ namespace WinFormTest
         private void ListView1_OnColumnSort(object sender, EventArgs e)
         {
 
+        }
+
+        private void doubleBufferedListView1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        {
+            e.Item = new ListViewItem([e.ItemIndex.ToString(), e.ItemIndex.ToString(), e.ItemIndex.ToString()]);
         }
     }
 }

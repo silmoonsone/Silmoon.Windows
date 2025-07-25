@@ -10,14 +10,12 @@ namespace Silmoon.Windows.Forms.Controls
 {
     public class DoubleBufferedListView : ListView
     {
-        public event Func<SortOrder, int?, bool> OnColumnSort;
+        public event Func<SortOrder, int, bool> OnVirtualModeColumnSort;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public SortOrder VirtualSortOrder { get; set; } = SortOrder.None;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int? VirtualSortColumnIndex { get; private set; } = null;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public List<int> AcceptSortColumns { get; set; } = new List<int>();
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string AscSortColumnSymbol { get; set; } = "▲";
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string DescSortColumnSymbol { get; set; } = "▼";
@@ -42,28 +40,35 @@ namespace Silmoon.Windows.Forms.Controls
         }
         protected override void OnColumnClick(ColumnClickEventArgs e)
         {
-            if (AcceptSortColumns?.Contains(e.Column) ?? false)
+            if (VirtualMode)
             {
-                foreach (var item in AcceptSortColumns)
-                {
-                    if (SortSymbolColumnTextPrefix)
-                        Columns[item].Text = Columns[item].Text.Replace(" " + AscSortColumnSymbol, string.Empty).Replace(" " + DescSortColumnSymbol, string.Empty);
-                    else Columns[item].Text = Columns[item].Text.Replace(AscSortColumnSymbol + " ", string.Empty).Replace(DescSortColumnSymbol + " ", string.Empty);
-                }
+                SortOrder tmpOrder;
 
-                if (VirtualSortColumnIndex.HasValue && VirtualSortColumnIndex.Value != e.Column)
-                {
-                    VirtualSortColumnIndex = e.Column;
-                    VirtualSortOrder = SortOrder.Ascending;
-
-                    if (SortSymbolColumnTextPrefix) Columns[VirtualSortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
-                    else Columns[VirtualSortColumnIndex.Value].Text = AscSortColumnSymbol + " " + Columns[VirtualSortColumnIndex.Value].Text;
-                }
+                if (VirtualSortColumnIndex != e.Column)
+                    tmpOrder = SortOrder.Ascending;
                 else
                 {
-                    VirtualSortColumnIndex = e.Column;
-                    if (VirtualSortOrder == SortOrder.None)
+                    tmpOrder = VirtualSortOrder switch
                     {
+                        SortOrder.None => SortOrder.Ascending,
+                        SortOrder.Ascending => SortOrder.Descending,
+                        _ => SortOrder.None
+                    };
+                }
+                var result = OnVirtualModeColumnSort?.Invoke(tmpOrder, e.Column) ?? false;
+
+                if (result)
+                {
+                    foreach (ColumnHeader item in Columns)
+                    {
+                        if (SortSymbolColumnTextPrefix)
+                            item.Text = item.Text.Replace(" " + AscSortColumnSymbol, string.Empty).Replace(" " + DescSortColumnSymbol, string.Empty);
+                        else item.Text = item.Text.Replace(AscSortColumnSymbol + " ", string.Empty).Replace(DescSortColumnSymbol + " ", string.Empty);
+                    }
+
+                    if (VirtualSortColumnIndex.HasValue && VirtualSortColumnIndex.Value != e.Column)
+                    {
+                        VirtualSortColumnIndex = e.Column;
                         VirtualSortOrder = SortOrder.Ascending;
 
                         if (SortSymbolColumnTextPrefix) Columns[VirtualSortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
@@ -71,26 +76,37 @@ namespace Silmoon.Windows.Forms.Controls
                     }
                     else
                     {
-                        if (VirtualSortOrder == SortOrder.Ascending)
+                        VirtualSortColumnIndex = e.Column;
+                        if (VirtualSortOrder == SortOrder.None)
                         {
-                            VirtualSortOrder = SortOrder.Descending;
+                            VirtualSortOrder = SortOrder.Ascending;
 
-                            if (SortSymbolColumnTextPrefix) Columns[VirtualSortColumnIndex.Value].Text += " " + DescSortColumnSymbol;
-                            else Columns[VirtualSortColumnIndex.Value].Text = DescSortColumnSymbol + " " + Columns[VirtualSortColumnIndex.Value].Text;
+                            if (SortSymbolColumnTextPrefix) Columns[VirtualSortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
+                            else Columns[VirtualSortColumnIndex.Value].Text = AscSortColumnSymbol + " " + Columns[VirtualSortColumnIndex.Value].Text;
                         }
                         else
                         {
-                            //SortColumnIndex = e.Column;
-                            //AscSort = true;
-                            //Columns[SortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
+                            if (VirtualSortOrder == SortOrder.Ascending)
+                            {
+                                VirtualSortOrder = SortOrder.Descending;
 
-                            VirtualSortColumnIndex = null;
-                            VirtualSortOrder = SortOrder.None;
+                                if (SortSymbolColumnTextPrefix) Columns[VirtualSortColumnIndex.Value].Text += " " + DescSortColumnSymbol;
+                                else Columns[VirtualSortColumnIndex.Value].Text = DescSortColumnSymbol + " " + Columns[VirtualSortColumnIndex.Value].Text;
+                            }
+                            else
+                            {
+                                //SortColumnIndex = e.Column;
+                                //AscSort = true;
+                                //Columns[SortColumnIndex.Value].Text += " " + AscSortColumnSymbol;
+
+                                VirtualSortColumnIndex = null;
+                                VirtualSortOrder = SortOrder.None;
+                            }
                         }
                     }
+                    Invalidate();
                 }
             }
-            if (OnColumnSort?.Invoke(VirtualSortOrder, VirtualSortColumnIndex) ?? false) Invalidate();
             base.OnColumnClick(e);
         }
     }

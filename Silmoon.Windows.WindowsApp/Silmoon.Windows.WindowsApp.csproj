@@ -39,7 +39,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4654" />
-    <PackageReference Include="Silmoon" Version="1.8.6" />
-    <PackageReference Include="Silmoon.Extension" Version="1.7.5" />
+    <PackageReference Include="Silmoon" Version="1.8.7" />
+    <PackageReference Include="Silmoon.Extension" Version="1.7.7" />
   </ItemGroup>
 </Project>

@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		.gitignore = .gitignore
 		LICENSE.txt = LICENSE.txt
 		logo.png = logo.png
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Silmoon.Windows.Win32", "Silmoon.Windows.Win32\Silmoon.Windows.Win32.csproj", "{B9A18B4E-06D6-4C6C-9CE2-611B95626616}"

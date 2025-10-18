@@ -1,24 +1,25 @@
 ﻿using Microsoft.UI.Xaml.Data;
+using Silmoon.Extension;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.WindowsApp.Converters
+namespace Silmoon.Windows.WinUI3.Converters
 {
-    public class DebugConverter : IValueConverter
+    public class NullOrDefaultToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            System.Diagnostics.Debug.WriteLine($"DebugConverter.Convert: {value}");
-            return value;
+            // 如果选中项不为null，则返回true，否则返回false
+            return !value.IsNullOrDefault();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            System.Diagnostics.Debug.WriteLine($"DebugConverter.ConvertBack: {value}");
-            return value;
+            throw new NotImplementedException();
         }
     }
 }

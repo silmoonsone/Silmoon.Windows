@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.WindowsApp.Converters
+namespace Silmoon.Windows.WinUI3.Converters
 {
     public class VisibilityToBoolConverter : IValueConverter
     {
@@ -16,7 +16,7 @@ namespace Silmoon.Windows.WindowsApp.Converters
             bool isInvert = (parameter as string).ToBool();
             bool isVisual = value is bool b1 && b1;
             return !isInvert
-                ? isVisual ? Visibility.Visible : (object)Visibility.Collapsed
+                ? isVisual ? Visibility.Visible : Visibility.Collapsed
                 : isVisual ? Visibility.Collapsed : (object)Visibility.Visible;
         }
 

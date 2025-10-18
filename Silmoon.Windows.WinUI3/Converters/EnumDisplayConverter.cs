@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Silmoon.Windows.WindowsApp.Converters
+namespace Silmoon.Windows.WinUI3.Converters
 {
     public class EnumDisplayConverter : IValueConverter
     {

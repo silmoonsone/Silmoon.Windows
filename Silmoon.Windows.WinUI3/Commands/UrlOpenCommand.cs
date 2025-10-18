@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Silmoon.Windows.WindowsApp.Commands
+namespace Silmoon.Windows.WinUI3.Commands
 {
     public class UrlOpenCommand : ICommand
     {
 #nullable enable
+#pragma warning disable CS0067
         public event EventHandler? CanExecuteChanged;
+#pragma warning restore CS0067
         public bool CanExecute(object? parameter)
         {
             return parameter is string url && !url.IsNullOrEmpty();

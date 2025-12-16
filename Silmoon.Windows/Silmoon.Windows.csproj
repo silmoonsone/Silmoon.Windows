@@ -40,10 +40,10 @@
 
   <ItemGroup>
     <PackageReference Include="Silmoon" Version="2.0.2" />
-    <PackageReference Include="System.DirectoryServices" Version="9.0.10" />
-    <PackageReference Include="System.Management" Version="9.0.10" />
-    <PackageReference Include="System.Resources.Extensions" Version="9.0.10" />
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.10" />
+    <PackageReference Include="System.DirectoryServices" Version="10.0.1" />
+    <PackageReference Include="System.Management" Version="10.0.1" />
+    <PackageReference Include="System.Resources.Extensions" Version="10.0.1" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.1" />
   </ItemGroup>
 
 

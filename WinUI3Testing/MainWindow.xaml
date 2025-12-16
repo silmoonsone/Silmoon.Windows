@@ -37,7 +37,9 @@
                     <MenuFlyoutItem Text="子菜单一"></MenuFlyoutItem>
                     <MenuFlyoutItem Text="子菜单二"></MenuFlyoutItem>
                     <MenuFlyoutItem Text="子菜单三"></MenuFlyoutItem>
-                    <MenuFlyoutItem Text="子菜单四"></MenuFlyoutItem>
+                    <MenuFlyoutSubItem Text="子菜单四">
+                        <MenuFlyoutItem Text="子菜单四-1"></MenuFlyoutItem>
+                    </MenuFlyoutSubItem>
                 </MenuBarItem>
                 <MenuBarItem Title="菜单二">
                     <MenuFlyoutItem Text="子菜单一"></MenuFlyoutItem>

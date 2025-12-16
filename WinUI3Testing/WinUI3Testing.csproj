@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
@@ -11,12 +11,11 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>annotations</Nullable>
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!--<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>-->
+    <WinUISDKReferences>true</WinUISDKReferences>
+    <WindowsPackageType>None</WindowsPackageType>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Pages\MainPage.xaml" />
-  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -42,16 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.6584" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251003001" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Silmoon.Windows.WinUI3\Silmoon.Windows.WinUI3.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Pages\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!--

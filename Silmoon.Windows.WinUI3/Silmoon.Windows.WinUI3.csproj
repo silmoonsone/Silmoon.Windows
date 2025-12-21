@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>Silmoon.Windows.WinUI3</RootNamespace>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -41,8 +41,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
-    <PackageReference Include="Silmoon" Version="2.0.2" />
-    <PackageReference Include="Silmoon.Extension" Version="2.0.1" />
+    <PackageReference Include="Silmoon" Version="2.0.3" />
+    <PackageReference Include="Silmoon.Extension" Version="2.0.2" />
   </ItemGroup>
 
 </Project>

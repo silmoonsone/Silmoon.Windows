@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Silmoon.Windows.Forms.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,12 @@ namespace WinFormTest
             doubleBufferedListView1.OnVirtualModeColumnSort += ListView1_OnVirtualModeColumnSort;
             doubleBufferedListView1.VirtualListSize = 100;
             doubleBufferedListView1.VirtualMode = true;
+
+            ListView listView = new ListView();
+            using (var x = listView.UpdateScope())
+            {
+
+            }
         }
 
         private bool ListView1_OnVirtualModeColumnSort(SortOrder arg1, int arg2)

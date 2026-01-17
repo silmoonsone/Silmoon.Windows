@@ -1,4 +1,5 @@
 ﻿using Silmoon.Windows.Forms.ControllerHelpers;
+using Silmoon.Windows.Forms.Controls;
 using Silmoon.Windows.Win32;
 using Silmoon.Windows.Win32.Apis;
 using Silmoon.Windows.Win32.Structs;
@@ -87,6 +88,11 @@ namespace Silmoon.Windows.Forms.Extensions
             lvItem.stateMask = mask;
             lvItem.state = value;
             User32.SendMessage(list.Handle, Const.LVM_SETITEMSTATE, itemIndex, ref lvItem);
+        }
+
+        public static ListViewUpdateScope UpdateScope(this ListView listView)
+        {
+            return new ListViewUpdateScope(listView);
         }
     }
 }

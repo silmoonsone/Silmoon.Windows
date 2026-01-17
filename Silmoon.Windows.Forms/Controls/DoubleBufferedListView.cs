@@ -110,4 +110,21 @@ namespace Silmoon.Windows.Forms.Controls
             base.OnColumnClick(e);
         }
     }
+    public readonly ref struct ListViewUpdateScope
+    {
+        private readonly ListView _listView;
+
+        public ListViewUpdateScope(ListView listView)
+        {
+            _listView = listView;
+            _listView?.BeginUpdate();
+        }
+
+        public void Dispose()
+        {
+            var lv = _listView;
+            if (lv == null || lv.IsDisposed) return;
+            lv.EndUpdate();
+        }
+    }
 }

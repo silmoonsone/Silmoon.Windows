@@ -22,7 +22,7 @@
 
   <PropertyGroup>
     <PackageId>Silmoon.Windows.Forms</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>SILMOON</Authors>
     <Company>SILMOON LLC</Company>
     <Description>Silmoon Windows SDK</Description>
@@ -38,8 +38,8 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Silmoon" Version="2.0.5" />
-    <PackageReference Include="Silmoon.Extension" Version="2.0.2" />
+    <PackageReference Include="Silmoon" Version="2.0.6" />
+    <PackageReference Include="Silmoon.Extension" Version="2.0.3" />
   </ItemGroup>
 
 

@@ -50,7 +50,6 @@ namespace WinFormTest
             doubleBufferedListView1.UseCompatibleStateImageBehavior = false;
             doubleBufferedListView1.View = View.Details;
             doubleBufferedListView1.VirtualSortOrder = SortOrder.None;
-            doubleBufferedListView1.RightToLeftLayoutChanged += ListView1_OnColumnSort;
             doubleBufferedListView1.RetrieveVirtualItem += doubleBufferedListView1_RetrieveVirtualItem;
             // 
             // columnHeader1

@@ -20,12 +20,6 @@ namespace WinFormTest
             doubleBufferedListView1.OnVirtualModeColumnSort += ListView1_OnVirtualModeColumnSort;
             doubleBufferedListView1.VirtualListSize = 100;
             doubleBufferedListView1.VirtualMode = true;
-
-            ListView listView = new ListView();
-            using (var x = listView.UpdateScope())
-            {
-
-            }
         }
 
         private bool ListView1_OnVirtualModeColumnSort(SortOrder arg1, int arg2)
@@ -37,11 +31,6 @@ namespace WinFormTest
         private void listView1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             e.Item = new ListViewItem([e.ItemIndex.ToString(), e.ItemIndex.ToString(), e.ItemIndex.ToString()]);
-        }
-
-        private void ListView1_OnColumnSort(object sender, EventArgs e)
-        {
-
         }
 
         private void doubleBufferedListView1_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)

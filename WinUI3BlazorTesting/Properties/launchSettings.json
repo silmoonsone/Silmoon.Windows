@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinUI3BlazorTesting (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinUI3BlazorTesting (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

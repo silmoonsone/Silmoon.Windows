@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Streams;
 
-namespace Silmoon.Windows.WinUI3.Extension
+namespace Silmoon.Windows.WinUI3.Extensions
 {
     public static class ImageSourceExtension
     {

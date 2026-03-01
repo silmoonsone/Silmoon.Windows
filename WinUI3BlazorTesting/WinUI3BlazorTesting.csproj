@@ -44,9 +44,6 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Silmoon.Windows.WinUI3\Silmoon.Windows.WinUI3.csproj" />
-  </ItemGroup>
 
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
@@ -64,10 +61,4 @@
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="C:\Users\silmoon\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260101001\buildTransitive\..\include\WindowsAppSDK-VersionInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="C:\Users\silmoon\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260101001\buildTransitive\..\include\WindowsAppSDK-VersionInfo.cs" />
-  </ItemGroup>
 </Project>

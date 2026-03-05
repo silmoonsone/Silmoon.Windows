@@ -16,5 +16,10 @@ namespace Silmoon.Windows.Forms.Extensions
             comboBox.ValueMember = nameof(NameValue<T>.Value);
             comboBox.DataSource = EnumExtension2.ToDisplayNameValues<T>();
         }
+        public static void BindEnum<T>(this ComboBox comboBox, T defaultValue) where T : Enum
+        {
+            comboBox.BindEnum<T>();
+            comboBox.SelectedValue = defaultValue;
+        }
     }
 }

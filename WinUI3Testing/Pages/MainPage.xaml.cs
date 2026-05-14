@@ -41,7 +41,6 @@ namespace WinUI3Testing.Pages
         {
             var MainWindow = new MainWindow();
             MainWindow.ExtendsContentIntoTitleBar = true;
-            MainWindow.ctlMainPageFrame.Navigate(typeof(MainPage));
             MainWindow.Activate();
         }
     }

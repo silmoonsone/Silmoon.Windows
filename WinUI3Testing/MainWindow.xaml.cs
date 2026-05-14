@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WinUI3Testing.Pages;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,6 +27,7 @@ namespace WinUI3Testing
         public MainWindow()
         {
             InitializeComponent();
+            nameMainPageFrame.Navigate(typeof(MainPage));
         }
     }
 }

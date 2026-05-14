@@ -29,7 +29,7 @@
             <Button Grid.Column="0" Style="{StaticResource NavigationBackButtonNormalStyle}" ToolTipService.ToolTip="返回" VerticalAlignment="Top"/>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" x:Name="ctlTitleBar">
-                <TextBlock Padding="10,10,0,0" FontWeight="Bold">迈达克本地跟单系统</TextBlock>
+                <TextBlock Padding="10,10,0,0" FontWeight="Bold">WinUI3Testing</TextBlock>
             </StackPanel>
 
             <MenuBar Grid.Column="2" Margin="10,-3,0,0">
@@ -50,9 +50,9 @@
                 </MenuBarItem>
             </MenuBar>
 
-            <Frame Grid.Column="3" x:Name="ctlTitleBlank"></Frame>
+            <Frame Grid.Column="3" x:Name="nameTitleBlank"></Frame>
 
         </Grid>
-        <Frame Grid.Row="1" x:Name="ctlMainPageFrame" x:FieldModifier="public" Padding="10"></Frame>
+        <Frame Grid.Row="1" x:Name="nameMainPageFrame" x:FieldModifier="public" Padding="10"></Frame>
     </Grid>
 </Window>
